@@ -1,0 +1,76 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.31.2.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: 68219533e1de0c1a5febe6fd6771f1311e9cd75468e40c64fafdf97aade594cf
+
+name:           books
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/mattmoore/haskell-examples/tree/books/books#readme>
+homepage:       https://github.com/mattmoore/books#readme
+bug-reports:    https://github.com/mattmoore/books/issues
+author:         Matt Moore
+maintainer:     mattmoore@carbonhelix.com
+copyright:      2018 Matt Moore
+license:        MIT
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    ChangeLog.md
+
+source-repository head
+  type: git
+  location: https://github.com/mattmoore/books
+
+library
+  exposed-modules:
+      Author
+      Book
+      Query
+      Utility
+  other-modules:
+      Paths_books
+  hs-source-dirs:
+      src
+  build-depends:
+      aeson
+    , base >=4.7 && <5
+    , cassava
+    , containers
+    , text
+  default-language: Haskell2010
+
+executable books-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_books
+  hs-source-dirs:
+      app
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , books
+    , text
+  default-language: Haskell2010
+
+test-suite books-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      AuthorSpec
+      BookSpec
+      QuerySpec
+      UtilitySpec
+      Paths_books
+  hs-source-dirs:
+      test
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , books
+    , hspec
+    , hspec-discover
+  default-language: Haskell2010
